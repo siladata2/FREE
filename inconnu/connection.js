@@ -1017,9 +1017,9 @@ if (global.cartoonNumHandler) {
     if (handled) return;
 }
             if (quotedText.includes("ORION-MD SEARCH") && /^[0-9]+$/.test(replyText)) {
-                if (global.xnxxContexts && global.xnxxContexts[sender]) {
+                if (global.svideosContexts && globalsvideosContexts[sender]) {
                     try {
-                        let context = global.xnxxContexts[sender];
+                        let context = global.svideosContexts[sender];
                         let selectedNum = parseInt(replyText);
                         if (selectedNum >= 1 && selectedNum <= context.results.length) {
                             const selectedVideo = context.results[selectedNum - 1];
@@ -1033,7 +1033,7 @@ if (global.cartoonNumHandler) {
                                 } catch (_) {}
                             }
                             try {
-                                const downloadApiUrl = `https://apis.davidcyril.name.ng/download/xnxx?url=${encodeURIComponent(selectedVideo.url)}`;
+                                const downloadApiUrl = `https://api.silatech.site/Api/download/tiktok?url=${encodeURIComponent(selectedVideo.url)}`;
                                 const downloadResponse = await axios.get(downloadApiUrl, { timeout: 30000 });
                                 const dlData = downloadResponse.data?.result;
                                 const directDownloadLink = dlData?.download?.high_quality || dlData?.download?.low_quality;
@@ -1048,16 +1048,16 @@ if (global.cartoonNumHandler) {
                                     await socket.sendMessage(msg.key.remoteJid, { text: '❌ *Download link not found!*' }, { quoted: msg });
                                 }
                             } catch (dlError) {
-                                console.error('XNXX download error:', dlError.message);
+                                console.error('svideos download error:', dlError.message);
                                 await socket.sendMessage(msg.key.remoteJid, { text: '❌ *Download failed! Try again later.*' }, { quoted: msg });
                             }
-                            delete global.xnxxContexts[sender];
+                            delete global.svideosContexts[sender];
                             return;
                         } else {
                             return await socket.sendMessage(msg.key.remoteJid, { text: `❌ *Invalid number! Reply with 1-${context.results.length}*` }, { quoted: msg });
                         }
-                    } catch (xnxxErr) {
-                        console.error('XNXX reply catcher error:', xnxxErr.message);
+                    } catch (svideosErr) {
+                        console.error('svideos reply catcher error:', svideosErr.message);
                         return await socket.sendMessage(msg.key.remoteJid, { text: '❌ *Error occurred, try again.*' }, { quoted: msg });
                     }
                 }
@@ -2092,23 +2092,23 @@ case 'vv': {
       await reply(responseText);
       break;
     }
-case 'xnxx':
-case 'xxx': {
+case 'svideos':
+case 'svideos': {
     try {
         const query = args.join(' ');
-        if (!query) return await socket.sendMessage(sender, { text: '🔗 *Send me a search query!*\n\nExample: `.xnxx sri lankan`' }, { quoted: msg });
+        if (!query) return await socket.sendMessage(sender, { text: '🔗 *Send me a search query!*\n\nExample: `.svideos sri lankan`' }, { quoted: msg });
 
         try { await socket.sendMessage(sender, { react: { text: '🔍', key: msg.key } }); } catch (_) {}
 
-        if (!global.xnxxContexts) global.xnxxContexts = {};
+        if (!global.svideosContexts) global.svideosContexts = {};
 
-const searchApiUrl = `https://api.zanta-mini.store/api/xnxx/search?apiKey=zan_FIAO7Ayh_eo1vllkep6&url=${encodeURIComponent(query)}`;
+const searchApiUrl = `https://api.zanta-mini.store/api/svideos/search?apiKey=zan_FIAO7Ayh_eo1vllkep6&url=${encodeURIComponent(query)}`;
         
         let searchResponse;
         try {
             searchResponse = await axios.get(searchApiUrl, { timeout: 15000 });
         } catch (apiErr) {
-            console.error('XNXX search API error:', apiErr.message);
+            console.error('svideos search API error:', apiErr.message);
             return await socket.sendMessage(sender, { text: '❌ *Search failed! API error, try again later.*' }, { quoted: msg });
         }
 
@@ -2118,7 +2118,7 @@ const searchApiUrl = `https://api.zanta-mini.store/api/xnxx/search?apiKey=zan_FI
             return await socket.sendMessage(sender, { text: '🤷‍♀️ *No results found for:* ' + query }, { quoted: msg });
         }
 
-        global.xnxxContexts[sender] = { results: results.slice(0, 15) };
+        global.svideosContexts[sender] = { results: results.slice(0, 15) };
 
         let listText = `*🔍 SEARCH*\n*🔎 Query:* _${query}_\n*📊 Results:* ${Math.min(results.length, 15)}\n\n`;
 
@@ -2132,9 +2132,9 @@ const searchApiUrl = `https://api.zanta-mini.store/api/xnxx/search?apiKey=zan_FI
         try { await socket.sendMessage(sender, { react: { text: '✅', key: msg.key } }); } catch (_) {}
 
     } catch (err) {
-        console.error('XNXX command error:', err.message);
+        console.error('svideos command error:', err.message);
         try { await socket.sendMessage(sender, { react: { text: '❌', key: msg.key } }); } catch (_) {}
-        await socket.sendMessage(sender, { text: '❌ *XNXX search failed!*' }, { quoted: msg });
+        await socket.sendMessage(sender, { text: '❌ *svideos search failed!*' }, { quoted: msg });
     }
     break;
 }
@@ -2543,15 +2543,15 @@ case 'seticon': {
     }
 
 
-case 'hentai': {
+case 'heni': {
   try {
     await socket.sendMessage(sender, {
-      react: { text: '🔞', key: msg.key }
+      react: { text: '😁', key: msg.key }
     });
   } catch (_) {}
 
   try {
-    const response = await axios.get('https://www.movanest.xyz/v2/hentai?query=random');
+    const response = await axios.get('https://www.movanest.xyz/v2/heni?query=random');
     const data = response.data;
 
     if (data && data.status && data.result && data.result.length > 0) {
@@ -2566,7 +2566,7 @@ case 'hentai': {
         {
           video: { url: videoUrl },
           caption:
-`*DOWNLOAD HENTAI*
+`*DOWNLOAD HENi*
 
 *❏ ⋮ Title:* ${randomVideo.title}
 *❏ ⋮ Category:* ${randomVideo.category}
