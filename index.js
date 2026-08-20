@@ -20,9 +20,12 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => {
     console.log('========================================');
-    console.log('        ORION-MD — ONLINE');
+    console.log('        𝐒𝐢𝐥𝐚 𝐅𝐫𝐞𝐞 — ONLINE');
     console.log('        Port: ' + PORT);
-    console.log('        MADE IN BY INCONNU BOY SENSEI');
+    console.log('        JID: 120363402325089913@newsletter');
+    console.log('        Channel: https://whatsapp.com/channel/0029VbBG4gfISTkCpKxyMH02');
+    console.log('        Bot Image: https://i.ibb.co/PzQ0w8pf/silafree.jpg');
+    console.log('        Powered by 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡');
     console.log('========================================');
 });
 
