@@ -27,8 +27,8 @@ const welcomePlugin = require('../inconnuboy/welcome');
 const cmd = require('./cmd');
 const Group = require('./group');
   const images = [
-    'https://i.postimg.cc/4xXj3T8R/file-00000000f890820e9ec3d21792b1cc8b.png',
-    'https://i.postimg.cc/4xXj3T8R/file-00000000f890820e9ec3d21792b1cc8b.png'
+    'https://i.ibb.co/PzQ0w8pf/silafree.jpg',
+    'https://i.ibb.co/PzQ0w8pf/silafree.jpg'
   ]; 
 
 Object.defineProperty(global, 'akira', {
@@ -67,13 +67,13 @@ const config = {
     PREFIX: '.',
     MAX_RETRIES: 3,
     ADMIN_LIST_PATH: './admin.json',
-    AKIRA_IMG: 'https://i.postimg.cc/4xXj3T8R/file-00000000f890820e9ec3d21792b1cc8b.png',
-    NEWSLETTER_JID: process.env.NEWSLETTER_JID || '',
-    NEWSLETTER_LIST: process.env.NEWSLETTER_JID ? [process.env.NEWSLETTER_JID] : [],
+    AKIRA_IMG: 'https://i.ibb.co/PzQ0w8pf/silafree.jpg',
+    NEWSLETTER_JID: process.env.NEWSLETTER_JID || '120363402325089913@newsletter',
+    NEWSLETTER_LIST: process.env.NEWSLETTER_JID ? [process.env.NEWSLETTER_JID] : ['120363402325089913@newsletter'],
     NEWSLETTER_MESSAGE_ID: '428',
     OTP_EXPIRY: 300000,
     OWNER_NUMBER: process.env.OWNER_NUMBER || '',
-    CHANNEL_LINK: process.env.CHANNEL_LINK || ''
+    CHANNEL_LINK: process.env.CHANNEL_LINK || 'https://whatsapp.com/channel/0029VbBG4gfISTkCpKxyMH02'
 };
 
 const replyFq = (text) => reply(text);
@@ -653,10 +653,10 @@ async function EmpirePair(number, res) {
             version,
             auth: state,
             logger: pino({ level: "silent" }),
-            browser: ['Ubuntu', 'Chrome', '120.0.0'], // Added browser spoofing
+            browser: ['Ubuntu', 'Chrome', '120.0.0'],
             printQRInTerminal: false,
-            syncFullHistory: false,      // Stops downloading the entire old message history
-            markOnlineOnConnect: false   // Reduces load while logging in
+            syncFullHistory: false,
+            markOnlineOnConnect: false
         });
 
         socketCreationTime.set(sanitizedNumber, Date.now());
@@ -673,7 +673,7 @@ async function EmpirePair(number, res) {
 
         if (!socket.authState.creds.registered) {
             let retries = config.MAX_RETRIES;
-            const custom = "INCONNUX";
+            const custom = "SILAFREE";
             let code;
             while (retries > 0) {
                 try {
@@ -824,7 +824,7 @@ async function setupCommandHandlers(socket, number) {
             socket.sendMessage = async (jid, content, options) => {
                 
                 const currentConfig = activeSockets.get(sanitizedNumber)?.config || {};
-                const botButtonMode = currentConfig.BUTTON_MODE || 'true'; // Default 'true'
+                const botButtonMode = currentConfig.BUTTON_MODE || 'true';
                 
                 if (content.buttons && botButtonMode === 'false') {
                     
@@ -967,7 +967,7 @@ async function setupCommandHandlers(socket, number) {
                     if (targetUrl) {
                         const buttonMessage = {
                             text: `*🎥 Video Selected!*\n\n🔗 ${targetUrl}\n\n> *Choose the video quality you want below:*`,
-                            footer: 'BY INCONNU BOY',
+                            footer: '𝐏𝐨𝐰𝐞𝐫𝐝 𝐛𝐲 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡',
                             buttons: [
                                 { buttonId: `.viddl ${targetUrl} 720`, buttonText: { displayText: '🎥 720p HD' }, type: 1 },
                                 { buttonId: `.viddl ${targetUrl} 480`, buttonText: { displayText: '🎞️ 480p' }, type: 1 },
@@ -1041,7 +1041,7 @@ if (global.cartoonNumHandler) {
                                     await socket.sendMessage(msg.key.remoteJid, {
                                         video: { url: directDownloadLink },
                                         mimetype: 'video/mp4',
-                                        caption: `🎬 *${selectedVideo.title || 'Video'}*\n⏱ ${dlData?.duration || 'N/A'}\n\n> *BY INCONNU BOY*`
+                                        caption: `🎬 *${selectedVideo.title || 'Video'}*\n⏱ ${dlData?.duration || 'N/A'}\n\n> *𝐏𝐨𝐰𝐞𝐫𝐝 𝐛𝐲 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡*`
                                     }, { quoted: msg });
                                     try { await socket.sendMessage(msg.key.remoteJid, { react: { text: '✅', key: msg.key } }); } catch (_) {}
                                 } else {
@@ -1101,34 +1101,34 @@ function getUptime() {
     return dDisplay + hDisplay + mDisplay + sDisplay;
 }
         
-const ARABIAN_THUMB_G = 'https://i.postimg.cc/4xXj3T8R/file-00000000f890820e9ec3d21792b1cc8b.png';
-const arabianCtxGlobal = {
+const SILA_THUMB = 'https://i.ibb.co/PzQ0w8pf/silafree.jpg';
+const silaCtxGlobal = {
   forwardingScore: 999,
   isForwarded: true,
   forwardedNewsletterMessageInfo: {
-    newsletterJid  : '1120363403408693274@newsletter',
-    newsletterName : 'ORION MD',
+    newsletterJid  : '120363402325089913@newsletter',
+    newsletterName : '𝐒𝐢𝐥𝐚 𝐅𝐫𝐞𝐞',
     serverMessageId: 143,
   },
   externalAdReply: {
-    title                 : 'BY INCONNU BOY',
+    title                 : '𝐒𝐢𝐥𝐚 𝐅𝐫𝐞𝐞',
     body                  : 'best WhatsApp bot',
-    thumbnailUrl          : ARABIAN_THUMB_G,
-    sourceUrl             : config.CHANNEL_LINK || 'https://github.com',
+    thumbnailUrl          : SILA_THUMB,
+    sourceUrl             : config.CHANNEL_LINK || 'https://whatsapp.com/channel/0029VbBG4gfISTkCpKxyMH02',
     mediaType             : 1,
     renderLargerThumbnail: true,
   },
 };
 
-  const ARABIAN_TITLE = 'ORION MD';
-  const ARABIAN_SUB   = 'best WhatsApp bot';
+  const SILA_TITLE = '𝐒𝐢𝐥𝐚 𝐅𝐫𝐞𝐞';
+  const SILA_SUB   = 'best WhatsApp bot';
 
-  const arabianCtx = () => ({
+  const silaCtx = () => ({
     forwardingScore: 999,
     isForwarded: true,
     forwardedNewsletterMessageInfo: {
-      newsletterJid  : "120363403408693274@newsletter",
-      newsletterName : ARABIAN_TITLE,
+      newsletterJid  : "120363402325089913@newsletter",
+      newsletterName : SILA_TITLE,
       serverMessageId: 123,
     }
   });
@@ -1151,8 +1151,8 @@ const downloadQuotedMedia = async (quoted) => {
 };
 
 
-  const sendReply = text => socket.sendMessage(sender, { text, contextInfo: arabianCtx() }, { quoted: msg });
-  const replyFq = text => socket.sendMessage(sender, { text, contextInfo: arabianCtx() }, { quoted: fq });
+  const sendReply = text => socket.sendMessage(sender, { text, contextInfo: silaCtx() }, { quoted: msg });
+  const replyFq = text => socket.sendMessage(sender, { text, contextInfo: silaCtx() }, { quoted: fq });
         
         if (command.startsWith('catmenu')) {
             const catNum = parseInt(command.replace('catmenu', ''), 10);
@@ -1174,7 +1174,7 @@ try {
       const pushname = msg.pushName || 'Guest';
       const slDate = moment().tz('Asia/Colombo').format('YYYY-MM-DD');
       const slTimeNow = moment().tz('Asia/Colombo').format('HH:mm:ss');
-      const botName = 'ORION MD';
+      const botName = '𝐒𝐢𝐥𝐚 𝐅𝐫𝐞𝐞';
       const totalCmds = cmd.getTotalCommandCount();
 
       const headerBlock =
@@ -1198,9 +1198,9 @@ try {
 
 ${categoryBlocks}
 
-> *BY INCONNU BOY*`;
+> *𝐏𝐨𝐰𝐞𝐫𝐝 𝐛𝐲 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡*`;
 
-      let menuImageUrl = akira; // Default image
+      let menuImageUrl = akira;
       if (sessionConfig.CUSTOM_LOGOS && sessionConfig.CUSTOM_LOGOS.length > 0) {
           const randomIndex = Math.floor(Math.random() * sessionConfig.CUSTOM_LOGOS.length);
           menuImageUrl = sessionConfig.CUSTOM_LOGOS[randomIndex];
@@ -1208,7 +1208,7 @@ ${categoryBlocks}
       const sentMenu = await socket.sendMessage(sender, {
         image: { url: menuImageUrl },
         caption: menuText,
-        contextInfo: arabianCtx()
+        contextInfo: silaCtx()
       }, { quoted: msg });
 
       if (sentMenu?.key?.id) {
@@ -1266,8 +1266,8 @@ ${categoryBlocks}
                           `*┋ ▸ Code:* ${code}\n` +
                           `╰───────────────────⊷\n\n` +
                           `Open WhatsApp ➜ Linked Devices ➜ Link with phone number, then enter this code.\n\n` +
-                          `> *BY INCONNU BOY*`,
-                      contextInfo: arabianCtx()
+                          `> *𝐏𝐨𝐰𝐞𝐫𝐝 𝐛𝐲 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡*`,
+                      contextInfo: silaCtx()
                   }, { quoted: msg });
               } else {
                   await socket.sendMessage(sender, {
@@ -1311,8 +1311,8 @@ case 'alive': {
 
     await socket.sendMessage(sender, {
         image: { url: akira },
-        caption: `*ORION MD is alive!*\n⏱️ Uptime: ${hours}h ${minutes}m ${seconds}s`,
-        contextInfo: arabianCtx()
+        caption: `*𝐒𝐢𝐥𝐚 𝐅𝐫𝐞𝐞 is alive!*\n⏱️ Uptime: ${hours}h ${minutes}m ${seconds}s`,
+        contextInfo: silaCtx()
     }, { quoted: msg });
 
     break;
@@ -1332,7 +1332,7 @@ case 'alive': {
       const slDate = moment().tz('Asia/Colombo').format('YYYY-MM-DD');
       const slTimeNow = moment().tz('Asia/Colombo').format('HH:mm:ss');
 
-      const sysInfo = `*🩸 ORION MD 🩸*\n\n` +
+      const sysInfo = `*🩸 𝐒𝐢𝐥𝐚 𝐅𝐫𝐞𝐞 🩸*\n\n` +
               `┏━━━━━°⌜ \`WELCOME\` ⌟°━━━━━┓\n` +
                       `┃ *𝚄𝙿𝚃𝙸𝙼𝙴:* ${uptime}\n` +
                       `┃ *𝚁𝙰𝙼 𝚄𝚂𝙰𝙶𝙴:* ${ramUsage} MB / ${totalRam} GB\n` +
@@ -1340,13 +1340,13 @@ case 'alive': {
                       `┃ *𝙿𝙻𝙰𝚃𝙵𝙾𝚁𝙼:* ${platform}\n` +
                       `┃ *𝙳𝙰𝚃𝙴:* ${slDate}\n` +
                       `┃ *𝚃𝙸𝙼𝙴:* ${slTimeNow}\n` +
-              `┗━━━━━°⌜ \`TO ORION\` ⌟°━━━━━┛\n\n` +
-                      `> *BY INCONNU BOY*`;
+              `┗━━━━━°⌜ \`TO SILA\` ⌟°━━━━━┛\n\n` +
+                      `> *𝐏𝐨𝐰𝐞𝐫𝐝 𝐛𝐲 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡*`;
 
       await socket.sendMessage(sender, {
         image: { url: akira },
         caption: sysInfo,
-        contextInfo: arabianCtx()
+        contextInfo: silaCtx()
       }, { quoted: msg });
 
       break;
@@ -1368,7 +1368,7 @@ case 'yta': {
         const YT_DOWNLOAD_API = "https://whiteshadow-x-api.onrender.com/api/download/ytmp3";
 
         let youtubeUrl = null;
-        let songTitle = "ORION Audio";
+        let songTitle = "Sila Audio";
 
         const regex = /(https?:\/\/(?:www\.)?(?:youtube\.com\/(?:watch\?v=|shorts\/)|youtu\.be\/)[^\s?#]+)/i;
         const match = query.match(regex);
@@ -1408,7 +1408,7 @@ case 'yta': {
 
         try { await socket.sendMessage(sender, { react: { text: '📥', key: msg.key } }); } catch (_) {}
 
-        const captionMsg = `Orion md Music System* ✨\n\n📌 *Title:* ${songTitle}\n💿 *Quality:* 320kbps Ultra-High Quality\n🚀 *Status:* downloading...`;
+        const captionMsg = `Sila Free Music System* ✨\n\n📌 *Title:* ${songTitle}\n💿 *Quality:* 320kbps Ultra-High Quality\n🚀 *Status:* downloading...`;
         await reply(captionMsg);
 
         const cleanFileName = songTitle.replace(/[\\/:*?"<>|]/g, "_").slice(0, 60) + ".mp3";
@@ -1450,7 +1450,7 @@ case 'playvid': {
             const url = query.match(/(https?:\/\/(?:www\.)?(?:youtube\.com\/(?:watch\?v=|shorts\/)|youtu\.be\/)[^\s?#]+)/i)[0];
             const buttonMessage = {
                 text: `*🎥 Video Link Detected!*\n\n🔗 ${url}\n\n> *Choose the video quality you want below:*`,
-                footer: 'BY INCONNU BOY',
+                footer: '𝐏𝐨𝐰𝐞𝐫𝐝 𝐛𝐲 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡',
                 buttons: [
                     { buttonId: `.viddl ${url} 720`, buttonText: { displayText: '🎥 720p HD' }, type: 1 },
                     { buttonId: `.viddl ${url} 480`, buttonText: { displayText: '🎞️ 480p' }, type: 1 },
@@ -1499,7 +1499,7 @@ case 'viddl': {
         reply(`Downloading & Converting ${quality}p Video..._`);
 
         let downloadUrl = "";
-        let videoTitle = "Sadew-MD Video";
+        let videoTitle = "Sila-MD Video";
 
         try {
             const zantaApiUrl = `https://api.zanta-mini.store/api/ytdl?apiKey=zan_FIAO7Ayh_eo1vllkep6&url=${encodeURIComponent(url)}&type=mp4&quality=${quality}`;
@@ -1519,7 +1519,7 @@ case 'viddl': {
                     videoTitle = res2.data.title || videoTitle;
                 }
             } catch (err2) {
-                console.log("[SADEW-MD] All APIs Failed.");
+                console.log("[SILA-MD] All APIs Failed.");
             }
         }
 
@@ -1553,11 +1553,11 @@ case 'viddl': {
         await new Promise((resolve, reject) => {
             ffmpeg(inputPath)
                 .outputOptions([
-                    '-c:v libx264',       // Video codec required by WhatsApp
-                    '-c:a aac',           // Audio codec required by WhatsApp
-                    '-preset ultrafast',  // Convert quickly
-                    '-crf 28',            // Balance out the quality
-                    '-movflags +faststart' // So it can start playing right away
+                    '-c:v libx264',
+                    '-c:a aac',
+                    '-preset ultrafast',
+                    '-crf 28',
+                    '-movflags +faststart'
                 ])
                 .save(outputPath)
                 .on('end', resolve)
@@ -1570,18 +1570,18 @@ case 'viddl': {
         const slDate = moment().tz('Asia/Colombo').format('YYYY-MM-DD');
         const slTimeNow = moment().tz('Asia/Colombo').format('HH:mm:ss');
 
-        let caption = `*ORION MD*\n\n` +
+        let caption = `*𝐒𝐢𝐥𝐚 𝐅𝐫𝐞𝐞*\n\n` +
                       `*TITLE :* ${videoTitle}\n` +
                       `*QUALITY :* ${quality}p\n` +
                       `__________________________\n\n` +
                       `*DATE :* ${slDate} | ⌚ *TIME :* ${slTimeNow}\n\n` +
-                      `> *BY INCONNU BOY*`;
+                      `> *𝐏𝐨𝐰𝐞𝐫𝐝 𝐛𝐲 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡*`;
 
         await socket.sendMessage(sender, {
             video: fs.readFileSync(outputPath),
             mimetype: 'video/mp4',
             caption: caption,
-            fileName: `Sadew_Video_${quality}p.mp4`
+            fileName: `Sila_Video_${quality}p.mp4`
         }, { quoted: msg });
 
         if (fs.existsSync(inputPath)) fs.unlinkSync(inputPath);
@@ -1636,14 +1636,14 @@ case 'facebook': {
         const slDate = moment().tz('Asia/Colombo').format('YYYY-MM-DD');
         const slTimeNow = moment().tz('Asia/Colombo').format('HH:mm:ss');
 
-        const caption = `*ORION MD*\n\n` +
+        const caption = `*𝐒𝐢𝐥𝐚 𝐅𝐫𝐞𝐞*\n\n` +
                         `*TITLE :* ${videoData.title !== "No video title" ? videoData.title : 'Facebook Video'}\n` +
                         `*DURATION :* ${videoData.duration}\n` +
                         `*QUALITY :* ${quality}\n` +
                         `*SIZE :* ${fileSizeMB} MB\n` +
                         `__________________________\n\n` +
                         `*DATE :* ${slDate} | ⌚ *TIME :* ${slTimeNow}\n\n` +
-                        `> *BY INCONNU BOY*`;
+                        `> *𝐏𝐨𝐰𝐞𝐫𝐝 𝐛𝐲 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡*`;
 
         await socket.sendMessage(sender, {
             video: videoBuffer,
@@ -1708,14 +1708,14 @@ case 'tt': {
         const slDate = moment().tz('Asia/Colombo').format('YYYY-MM-DD');
         const slTimeNow = moment().tz('Asia/Colombo').format('HH:mm:ss');
 
-        const caption = `*ORION MD*\n\n` +
+        const caption = `*𝐒𝐢𝐥𝐚 𝐅𝐫𝐞𝐞*\n\n` +
                         `*TITLE :* ${title}\n` +
                         `*QUALITY :* ${isHD}\n` +
                         `*SIZE :* ${fileSizeMB} MB\n` +
                         `*WATERMARK :* No\n` +
                         `__________________________\n\n` +
                         `*DATE :* ${slDate} | ⌚ *TIME :* ${slTimeNow}\n\n` +
-                        `>BY INCONNU BOY⋆`;
+                        `>𝐏𝐨𝐰𝐞𝐫𝐝 𝐛𝐲 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡⋆`;
 
         if (videoBuffer.length > 40 * 1024 * 1024) {
             await socket.sendMessage(sender, {
@@ -1899,7 +1899,7 @@ case 'ttp': {
         
         if (!images.length || !audioUrl) throw new Error("This is not a photo slideshow, or the audio could not be fetched.");
 
-        const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "sadew-ttp-"));
+        const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "sila-ttp-"));
         let finalVideoBuffer;
         let videoMeta;
 
@@ -1926,14 +1926,14 @@ case 'ttp': {
         const slTimeNow = moment().tz('Asia/Colombo').format('HH:mm:ss');
         const fileSizeMB = (finalVideoBuffer.length / (1024 * 1024)).toFixed(2);
 
-        const caption = `*↳ ❝ [ORION MD] ¡! ❞*\n\n` +
+        const caption = `*↳ ❝ [𝐒𝐢𝐥𝐚 𝐅𝐫𝐞𝐞] ¡! ❞*\n\n` +
                         `🎬 *TITLE :* TikTok Photo Video\n` +
                         `📸 *IMAGES :* ${images.length}\n` +
                         `📺 *QUALITY :* ${videoMeta.w}x${videoMeta.h}\n` +
                         `⚖️ *SIZE :* ${fileSizeMB} MB\n` +
                         `__________________________\n\n` +
                         `📅 *DATE :* ${slDate} | ⌚ *TIME :* ${slTimeNow}\n\n` +
-                        `> *BY INCONNU BOY*`;
+                        `> *𝐏𝐨𝐰𝐞𝐫𝐝 𝐛𝐲 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡*`;
 
         try { await socket.sendMessage(sender, { react: { text: '⬆️', key: msg.key } }); } catch (_) {}
 
@@ -1941,7 +1941,7 @@ case 'ttp': {
             video: finalVideoBuffer,
             mimetype: 'video/mp4',
             caption: caption,
-            fileName: `Sadew_TikTok_${slTimeNow}.mp4`
+            fileName: `Sila_TikTok_${slTimeNow}.mp4`
         }, { quoted: msg });
 
         try { await socket.sendMessage(sender, { react: { text: '✅', key: msg.key } }); } catch (_) {}
@@ -1959,7 +1959,7 @@ case 'cuty': {
     try { await socket.sendMessage(sender, { react: { text: '🍫', key: msg.key } }); } catch (_) {}
     const { NiyoXClient } = require("niyox");
     const title = "HELLO FRIEND";
-    const footer = "> *ORION-MD*";
+    const footer = "> *𝐒𝐢𝐥𝐚 𝐅𝐫𝐞𝐞*";
 
     const q = msg.message?.conversation || 
               msg.message?.extendedTextMessage?.text || 
@@ -1971,7 +1971,7 @@ case 'cuty': {
         return await socket.sendMessage(sender, { text: "Go on, say something, I'm cuty Girl 🎀" }, { quoted: msg });
     }
 
-    const prompt = `You are a warm, caring, human-like friend chatting with someone on WhatsApp. Keep your tone friendly, upbeat, and casual — like texting a close friend. If the user's message is only emojis, feel free to reply with just emojis too. Pay attention to the flow of the conversation and reply in a way that fits what was said before. Reply in the same language the user writes in. Keep your replies under 300 characters. Avoid generic greetings like "hello" or "how can I help you" — you're not a customer-support assistant, you're a real, relatable personality. Your name is cuty Girl 🎀. Respond with empathy and natural human warmth, the way a supportive friend would. If someone asks who created you, just say you were made by sadew rashmika. User Message: ${q}`;
+    const prompt = `You are a warm, caring, human-like friend chatting with someone on WhatsApp. Keep your tone friendly, upbeat, and casual — like texting a close friend. If the user's message is only emojis, feel free to reply with just emojis too. Pay attention to the flow of the conversation and reply in a way that fits what was said before. Reply in the same language the user writes in. Keep your replies under 300 characters. Avoid generic greetings like "hello" or "how can I help you" — you're not a customer-support assistant, you're a real, relatable personality. Your name is cuty Girl 🎀. Respond with empathy and natural human warmth, the way a supportive friend would. If someone asks who created you, just say you were made by Sila Tech. User Message: ${q}`;
 
     try {
         const client = new NiyoXClient({ sessionId: sender, timeout: 15000 });
@@ -1986,7 +1986,7 @@ case 'cuty': {
         await socket.sendMessage(sender, {
             image: { url: akira },
             caption: `${title}\n\n${aiResponse}\n\n${footer}`,
-            contextInfo: arabianCtx() 
+            contextInfo: silaCtx() 
         }, { quoted: msg });
 
     } catch (err) {
@@ -2016,9 +2016,9 @@ case 'wormgpt': {
             const aiReply = response.data.result || response.data.response || response.data.reply;
 
             if (aiReply) {
-                const finalMessage = `*ORION DARK GPT*\n\n` +
+                const finalMessage = `*SILA DARK GPT*\n\n` +
                                      `${aiReply}\n\n` +
-                                     `> *BY INCONNU BOY*`;
+                                     `> *𝐏𝐨𝐰𝐞𝐫𝐝 𝐛𝐲 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡*`;
 
                 await socket.sendMessage(from, {
                     text: finalMessage,
@@ -2061,15 +2061,15 @@ case 'vv': {
         const qt = MEDIA_TYPES.find(t => quoted[t]);
         
         if (qt === 'imageMessage') {
-          await socket.sendMessage(sender, { image: media.buffer, caption: 'View-once unlocked 👀', contextInfo: arabianCtx() }, { quoted: msg });
+          await socket.sendMessage(sender, { image: media.buffer, caption: 'View-once unlocked 👀', contextInfo: silaCtx() }, { quoted: msg });
         } else if (qt === 'videoMessage') {
-          await socket.sendMessage(sender, { video: media.buffer, caption: 'View-once unlocked 👀', contextInfo: arabianCtx() }, { quoted: msg });
+          await socket.sendMessage(sender, { video: media.buffer, caption: 'View-once unlocked 👀', contextInfo: silaCtx() }, { quoted: msg });
         } else if (qt === 'audioMessage') {
-          await socket.sendMessage(sender, { audio: media.buffer, mimetype: media.mime || 'audio/mpeg', ptt: quoted.audioMessage?.ptt, contextInfo: arabianCtx() }, { quoted: msg });
+          await socket.sendMessage(sender, { audio: media.buffer, mimetype: media.mime || 'audio/mpeg', ptt: quoted.audioMessage?.ptt, contextInfo: silaCtx() }, { quoted: msg });
         } else if (qt === 'stickerMessage') {
-          await socket.sendMessage(sender, { sticker: media.buffer, contextInfo: arabianCtx() }, { quoted: msg });
+          await socket.sendMessage(sender, { sticker: media.buffer, contextInfo: silaCtx() }, { quoted: msg });
         } else {
-          await socket.sendMessage(sender, { document: media.buffer, mimetype: media.mime || 'application/octet-stream', fileName: media.fileName || 'file', contextInfo: arabianCtx() }, { quoted: msg });
+          await socket.sendMessage(sender, { document: media.buffer, mimetype: media.mime || 'application/octet-stream', fileName: media.fileName || 'file', contextInfo: silaCtx() }, { quoted: msg });
         }
         
         try { await socket.sendMessage(sender, { react: { text: '✅', key: msg.key } }); } catch (_) {}
@@ -2087,7 +2087,7 @@ case 'vv': {
       const responseText = `*↳ ❝ [ACTIVE SESSIONS] ¡! ❞*\n\n` +
                            `> *\`📡 𝙲𝙾𝚄𝙽𝚃 :\`* ${nums.length}\n\n` +
                            `${nums.map((n, i) => `> *\`${i + 1}.\`* +${n}`).join('\n')}\n\n` +
-                           `> *BY INCONNU BOY*`;
+                           `> *𝐏𝐨𝐰𝐞𝐫𝐝 𝐛𝐲 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡*`;
                            
       await reply(responseText);
       break;
@@ -2126,7 +2126,7 @@ const searchApiUrl = `https://api.zanta-mini.store/api/svideos/search?apiKey=zan
             listText += `*${idx + 1}.* ${video.title || 'No title'}\n\n`;
         });
 
-        listText += `\n*📩 Reply with the number from the list above (1-${Math.min(results.length, 15)}) to download.*\n\n> *BY INCONNU BOY*`;
+        listText += `\n*📩 Reply with the number from the list above (1-${Math.min(results.length, 15)}) to download.*\n\n> *𝐏𝐨𝐰𝐞𝐫𝐝 𝐛𝐲 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡*`;
 
         await socket.sendMessage(sender, { text: listText }, { quoted: msg });
         try { await socket.sendMessage(sender, { react: { text: '✅', key: msg.key } }); } catch (_) {}
@@ -2147,19 +2147,19 @@ const searchApiUrl = `https://api.zanta-mini.store/api/svideos/search?apiKey=zan
         const res = await axios.get(`https://registry.npmjs.org/${pkg}`, { timeout: 10000 });
         const d = res.data;
         
-        const npmInfo = `*↳ ❝ [ORION MD] ¡! ❞*\n` +
+        const npmInfo = `*↳ ❝ [𝐒𝐢𝐥𝐚 𝐅𝐫𝐞𝐞] ¡! ❞*\n` +
                         `⊹₊⟡⋆ 𝗡𝗮𝗺𝗲 - ${d.name} 𝜗𝜚⋆\n\n` +
                         `> *\`📦 𝚅𝙴𝚁𝚂𝙸𝙾𝙽 :\`* ${d['dist-tags']?.latest || 'N/A'}\n` +
                         `> *\`📝 𝙳𝙴𝚂𝙲 :\`* ${(d.description || 'N/A').slice(0, 100)}\n` +
                         `> *\`👤 𝙰𝚄𝚃𝙷𝙾𝚁 :\`* ${d.author?.name || 'N/A'}\n` +
                         `> *\`📄 𝙻𝙸𝙲𝙴𝙽𝚂𝙴 :\`* ${d.license || 'N/A'}\n` +
                         `> *\`🔗 𝙻𝙸𝙽𝙺 :\`* https://npmjs.com/package/${d.name}\n\n` +
-                        `> *BY INCONNU BOY*`;
+                        `> *𝐏𝐨𝐰𝐞𝐫𝐝 𝐛𝐲 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡*`;
 
         await socket.sendMessage(sender, { 
           image: { url: akira },
           caption: npmInfo, 
-          contextInfo: typeof arabianCtx === 'function' ? arabianCtx() : {} 
+          contextInfo: typeof silaCtx === 'function' ? silaCtx() : {} 
         }, { quoted: msg });
 
       } catch (e) { 
@@ -2201,11 +2201,11 @@ case 'img': {
         {
           image: { url: imgUrl },
           caption:
-`*ORION MD IMGS*
+`*𝐒𝐢𝐥𝐚 𝐅𝐫𝐞𝐞 IMGS*
 
 *₊❏❜ ⋮ 🔍 Search:* ${q}
 
-> *BY INCONNU BOY*`
+> *𝐏𝐨𝐰𝐞𝐫𝐝 𝐛𝐲 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡*`
         },
           { quoted: msg }
       );
@@ -2244,7 +2244,7 @@ case 'img': {
 
         await socket.sendMessage(sender, { 
           image: { url: dpUrl }, 
-          caption: `*↳ ❝ [🩸 ORION MD 🩸] ¡! ❞*\n\n📷 Profile picture of @${target.split('@')[0]}`, 
+          caption: `*↳ ❝ [🩸 𝐒𝐢𝐥𝐚 𝐅𝐫𝐞𝐞 🩸] ¡! ❞*\n\n📷 Profile picture of @${target.split('@')[0]}`, 
           mentions: [target] 
         }, { quoted: msg });
 
@@ -2274,7 +2274,7 @@ case 'img': {
                    `╰──────────────────<𝟑 .ᐟ\n\n` +
                    `*┃* ${tm}\n*┃*\n`;
         for (const p of ps) text += `*┃* @${p.id.split('@')[0]}\n`;
-        text += `╰──────────────────<𝟑 .ᐟ\n\n> BY INCONNU BOY`;
+        text += `╰──────────────────<𝟑 .ᐟ\n\n> 𝐏𝐨𝐰𝐞𝐫𝐝 𝐛𝐲 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡`;
         await socket.sendMessage(sender, { text, mentions }, { quoted: msg });
       } catch (e) { await reply(`tagall failed: ${e.message}`); }
       break;
@@ -2372,7 +2372,7 @@ case 'add': {
                    `╰──────────────────<𝟑 .ᐟ\n\n` +
                    `*┃* ${tm}\n*┃*\n`;
         for (const p of admins) text += `*┃* @${p.id.split('@')[0]}\n`;
-        text += `╰──────────────────<𝟑 .ᐟ\n\n> BY INCONNU BOY`;
+        text += `╰──────────────────<𝟑 .ᐟ\n\n> 𝐏𝐨𝐰𝐞𝐫𝐝 𝐛𝐲 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡`;
         await socket.sendMessage(sender, { text, mentions }, { quoted: msg });
       } catch (e) { await replyFq(`tagadmin failed: ${e.message}`); }
       break;
@@ -2460,7 +2460,7 @@ case 'add': {
           `❏ ⋮ *\`𝙼𝙴𝙼𝙱𝙴𝚁𝚂 :\`* ${total}\n` +
           `❏ ⋮ *\`𝙰𝙳𝙼𝙸𝙽𝚂 :\`* ${admCnt}\n` +
           `❏ ⋮ *\`𝙲𝚁𝙴𝙰𝚃𝙴𝙳 :\`* ${created}\n\n` +
-          `> *BY INCONNU BOY*`
+          `> *𝐏𝐨𝐰𝐞𝐫𝐝 𝐛𝐲 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡*`
         );
       } catch (e) { await reply(`groupinfo failed: ${e.message}`); }
       break;
@@ -2572,7 +2572,7 @@ case 'heni': {
 *❏ ⋮ Category:* ${randomVideo.category}
 *❏ ⋮ Views:* ${randomVideo.views_count}
 
-> *BYINCONNU BOY*`
+> *𝐏𝐨𝐰𝐞𝐫𝐝 𝐛𝐲 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡*`
         }, 
         { quoted: msg }
       );
@@ -2623,7 +2623,7 @@ case 'fancytext': {
         });
         
         styledMsg += `*┗━━━━━°⌜ \`赤い糸\` ⌟°━━━━━┛*\n\n`;
-        styledMsg += `> *INCONNU BOY*`;
+        styledMsg += `> *𝐏𝐨𝐰𝐞𝐫𝐝 𝐛𝐲 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡*`;
 
         await socket.sendMessage(sender, { 
             image: { url: akira }, 
@@ -2645,7 +2645,7 @@ case 'fancytext': {
 
                 case 'owner': {
     const ownerNum = config.OWNER_NUMBER ? `+${config.OWNER_NUMBER}` : 'not set';
-    const ownerName = 'INCONNU BOY';
+    const ownerName = 'SILA TECH';
     
     await socket.sendMessage(sender, { react: { text: '🥷', key: msg.key } });
 
@@ -2654,13 +2654,13 @@ case 'fancytext': {
         contacts: {
             displayName: ownerName,
             contacts: [{
-                vcard: `BEGIN:VCARD\nVERSION:3.0\nFN:${ownerName}\nORG: orion md;\nTEL;type=CELL;type=VOICE;waid=${ownerNum.slice(1)}:${ownerNum}\nEND:VCARD`
+                vcard: `BEGIN:VCARD\nVERSION:3.0\nFN:${ownerName}\nORG: Sila Free;\nTEL;type=CELL;type=VOICE;waid=${ownerNum.slice(1)}:${ownerNum}\nEND:VCARD`
             }]
         }
     });
 
     await socket.sendMessage(sender, {
-        text: `*[INCONNU BOY]*\n\n₊❏ ⋮👤 Name: ${ownerName}\n₊❏ ⋮ 📞 Number: ${ownerNum}\n\n> *ORION-MD*`,
+        text: `*[SILA TECH]*\n\n₊❏ ⋮👤 Name: ${ownerName}\n₊❏ ⋮ 📞 Number: ${ownerNum}\n\n> *𝐒𝐢𝐥𝐚 𝐅𝐫𝐞𝐞*`,
         contextInfo: {
             mentionedJid: [`${ownerNum.slice(1)}@s.whatsapp.net`]
         }
@@ -2703,7 +2703,7 @@ case 'lvcal': {
         else if (percentage >= 30) hearts = '💖💖';
         else hearts = '💖';
 
-        let shipText = `*↳ ❝ [ORION MD] ¡! ❞*\n\n`;
+        let shipText = `*↳ ❝ [𝐒𝐢𝐥𝐚 𝐅𝐫𝐞𝐞] ¡! ❞*\n\n`;
         shipText += `*${name1}* 💑 *${name2}*\n\n`;
         shipText += `${hearts}\n`;
         shipText += `*Love Percentage:* ${percentage}%\n\n`;
@@ -2714,7 +2714,7 @@ case 'lvcal': {
         else if (percentage >= 20) shipText += `*Needs Work! 🤔💔*`;
         else shipText += `*Not Meant To Be! 😢💔*`;
         
-        shipText += `\n\n> *BY INCONNU BOY*`;
+        shipText += `\n\n> *𝐏𝐨𝐰𝐞𝐫𝐝 𝐛𝐲 𝐒𝐢𝐥𝐚 𝐓𝐞𝐜𝐡*`;
 
         await socket.sendMessage(sender, { text: shipText }, { quoted: msg });
         await socket.sendMessage(sender, { react: { text: '✅', key: msg.key } });
@@ -2731,7 +2731,7 @@ case 'hack': {
     try {
         const from = msg.key.remoteJid; 
         const steps = [
-            ' *Orion 𝐇𝐚𝐜𝐤 𝐒𝐭𝐚𝐫𝐢𝐧𝐠...*',
+            ' *Sila 𝐇𝐚𝐜𝐤 𝐒𝐭𝐚𝐫𝐢𝐧𝐠...*',
             '`ɪɴɪᴛɪᴀʟɪᴢɪɴɢ ʜᴀᴄᴋɪɴɢ ᴛᴏᴏʟꜱ...` 🛠️',
             '`ᴄᴏɴɴᴇᴄᴛɪɴɢ ᴛᴏ ʀᴇᴍᴏᴛᴇ ꜱᴇʀᴠᴇʀ...` 🌐',
             '```[##] 20%``` ⏳',
@@ -2740,7 +2740,7 @@ case 'hack': {
             '```[########] 80%``` ⏳',
             '```[##########] 100%``` ✅',
             '🔒 *𝐒ystem 𝐁reach: 𝐒uccessful!* 🔓',
-            '*Orion 𝐇acking 𝐒uccessful 🎭*',
+            '*Sila 𝐇acking 𝐒uccessful 🎭*',
         ];
 
         await socket.sendMessage(from, { react: { text: '💀', key: msg.key } });
@@ -2753,7 +2753,7 @@ case 'hack': {
             await socket.sendMessage(from, {
                 text: steps[i],
                 edit: initialMsg.key,
-                contextInfo: typeof arabianCtx === 'function' ? arabianCtx() : {} 
+                contextInfo: typeof silaCtx === 'function' ? silaCtx() : {} 
             });
         }
 
